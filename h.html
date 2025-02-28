@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Admin Panel</h1>
+<!-- Form to submit the response -->
+<form action="/admin" method="POST">
+<textarea name="message" placeholder="Reply to user..." required></textarea>
+<button type="submit">Send Reply</button>
+</form>
+<!-- Display response or acknowledgment -->
+{% if response %}
+<p class="response">{{ response }}</p>
+{% endif %}
+<h2>Admin's Messages:</h2>
+<div class="messages admin-messages">
+{% for msg in messages %}
+<div class="message admin">
+<strong>Admin:</strong>
+<p>{{ msg }}</p>
+</div>
+{% endfor %}
+</div>
+<h2>User Messages:</h2>
+<div class="messages user-messages">
+{% for msg in user_messages %}
+<div class="message user">
+<strong>User:</strong>
+<p>{{ msg }}</p>
+</div>
+{% endfor %}
+</div>
+</div>
+</body>
+</html>

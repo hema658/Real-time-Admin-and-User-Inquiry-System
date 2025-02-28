@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Inquiry</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>User Inquiry</h1>
+<!-- Form to submit the message -->
+<form action="/user" method="POST">
+<textarea name="message" placeholder="Ask a question..." required></textarea>
+<button type="submit">Send</button>
+</form>
+<!-- Display response or acknowledgment -->
+{% if response %}
+<p class="response">{{ response }}</p>
+{% endif %}
+<h2>Your Messages:</h2>
+<div class="messages">
+{% for msg in messages %}
+<div class="message">
+<p>{{ msg }}</p>
+</div>
+{% endfor %}
+</div>
+</div>
+</body>
+</html>
